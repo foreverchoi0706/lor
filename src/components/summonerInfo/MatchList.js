@@ -20,7 +20,6 @@ function Match({
   gameCreation,
   teams,
   participants,
-  participantIdentities,
 }) {
   const getGameDuration = (gameDuration) =>
     `${Math.ceil(gameDuration / MINITES)}분${gameDuration % MINITES}초`;
@@ -64,6 +63,7 @@ function Match({
 }
 
 function MatchList({ puuid }) {
+
   const { isLoaded, data } = useSelector(
     (rootReducer) => rootReducer.searchReducer.matchList,
     shallowEqual

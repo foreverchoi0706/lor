@@ -35,9 +35,9 @@ function* matchListSaga(action) {
   yield put(matchListSuccess(data));
 }
 
-export const nextMatchList = (accountId, beginIndex, endIndex) => ({
+export const nextMatchList = (puuid, beginIndex, endIndex) => ({
   type: GET_NEXT_MATCH_LIST,
-  accountId,
+  puuid,
   beginIndex,
   endIndex,
 });
@@ -50,7 +50,7 @@ const nextMatchListSuccess = (data) => ({
 function* nextMatchListSaga(action) {
   const data = yield call(
     api.nextMatchList,
-    action.accountId,
+    action.puuid,
     action.beginIndex,
     action.endIndex
   );

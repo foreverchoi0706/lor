@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_API_URL;
+const BASE_URL = "http://localhost:3001"
 
 console.log(BASE_URL);
 
@@ -54,10 +54,10 @@ const api = {
     return data;
   },
 
-  nextMatchList: async (accountId, beginIndex, endIndex) => {
+  nextMatchList: async (puuid, beginIndex, endIndex) => {
     const { data } = await instance.get("/search/next-match-list", {
       params: {
-        accountId,
+        puuid,
         beginIndex,
         endIndex,
       },

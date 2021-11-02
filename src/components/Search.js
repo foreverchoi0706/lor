@@ -29,7 +29,7 @@ function Search({ handleSearchResultClick }) {
   };
 
   return (
-    <form className={styles.Search}>
+    <form className={styles.Search} onSubmit={(e)=>e.preventDefault()}>
       <input
         type="text"
         placeholder=" 소환사명을 입력해 주세요"
