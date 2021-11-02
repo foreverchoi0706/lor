@@ -1,15 +1,15 @@
 import axios from "axios";
 
-//const DELOY_URL = "https://lol-api.foreverchoi0706.com";
+const BASE_URL = process.env.REACT_APP_API_URL;
 
-const DELOY_URL = "http://localhost:3002";
+console.log(BASE_URL);
 
 const instance = axios.create({
-  baseURL: DELOY_URL,
+  baseURL: BASE_URL,
 });
 
 const api = {
-  getVersion : async () => {
+  getVersion: async () => {
     const { data } = await instance.get("/navigation/version");
     return data;
   },
@@ -37,10 +37,10 @@ const api = {
     });
     return data;
   },
-  matchList: async (accountId) => {
+  matchList: async (puuid) => {
     const { data } = await instance.get("/search/match-list", {
       params: {
-        accountId,
+        puuid,
       },
     });
     return data;
@@ -67,7 +67,7 @@ const api = {
 
   getChampions: async () => {
     const { data } = await instance.get(
-      "https://ddragon.leagueoflegends.com/cdn/11.21.1/data/en_US/champion.json"
+      "https://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion.json"
     );
     return data;
   },
@@ -76,12 +76,12 @@ const api = {
     return {
       champions: await axios
         .get(
-          "https://ddragon.leagueoflegends.com/cdn/11.21.1/data/en_US/champion.json"
+          "https://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion.json"
         )
         .then((result) => result.data),
       spells: await axios
         .get(
-          "https://ddragon.leagueoflegends.com/cdn/11.21.1/data/en_US/summoner.json"
+          "https://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/summoner.json"
         )
         .then((result) => result.data),
     };

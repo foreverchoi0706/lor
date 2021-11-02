@@ -1,4 +1,5 @@
 import React, { useState, useEffect, memo } from "react";
+import { useSelector } from "react-redux";
 
 function Spell({ spells, spell1Id, spell2Id }) {
 
@@ -9,6 +10,7 @@ function Spell({ spells, spell1Id, spell2Id }) {
   const [spell2Name, setSpell2Name] = useState("");
 
   useEffect(async () => {
+    console.log(spells);
     const temp = Object.values(spells.data);
     if (!spell1Name && !spell2Name) {
       for (let i = 0; i < temp.length; i++) {

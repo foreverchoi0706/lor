@@ -5,7 +5,7 @@ import Loading from "./Loading";
 //styles
 import styles from "../styles/Search.module.scss";
 //reducers
-import { search } from "../util/reducers/searchReducer";
+import { search } from "../../reducers/searchReducer";
 
 function Search({ handleSearchResultClick }) {
   const { isSearched, data } = useSelector(

@@ -10,7 +10,7 @@ import defense from "../../images/info/defense.png";
 import difficulty from "../../images/info/difficulty.png";
 import magic from "../../images/info/magic.png";
 //reducer
-import { getChampionRaotaions } from "../../util/reducers/navigationReducer";
+import { getChampionRaotaions } from "../../../reducers/navigationReducer";
 //division
 import { tagDivision } from "../../util/division";
 

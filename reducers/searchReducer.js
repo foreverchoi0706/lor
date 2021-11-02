@@ -26,12 +26,12 @@ function* searchSummonerSaga(action) {
   yield put(searchDone(data));
 }
 
-export const matchList = (accountId) => ({ type: GET_MATCH_LIST, accountId });
+export const matchList = (puuid) => ({ type: GET_MATCH_LIST, puuid });
 
 const matchListSuccess = (data) => ({ type: GET_MATCH_LIST_SUCCESS, data });
 
 function* matchListSaga(action) {
-  const data = yield call(api.matchList, action.accountId);
+  const data = yield call(api.matchList, action.puuid);
   yield put(matchListSuccess(data));
 }
 
@@ -110,6 +110,7 @@ export default function searchReducer(state = initialState, action) {
         },
       };
     case GET_MATCH_LIST_SUCCESS:
+      console.log(action);
       return {
         ...state,
         matchList: {

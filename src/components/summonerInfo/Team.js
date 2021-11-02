@@ -9,7 +9,7 @@ import styles from "../../styles/summonerInfo/Team.module.scss";
 //util
 import { laneDivision } from "../../util/division";
 
-function Team({ mapId, division, win, team, participantIdentities }) {
+function Team({ mapId, division, win, team }) {
   const { data } = useSelector(
     (rootReducer) => rootReducer.ddragonReducer.ddragon,
     shallowEqual
@@ -34,20 +34,17 @@ function Team({ mapId, division, win, team, participantIdentities }) {
           <div key={participant.participantId}>
             <div>
               <strong className="Team_summonerName">
-                {
-                  participantIdentities[participant.participantId - 1].player
-                    .summonerName
-                }
+                {participant.summonerName}
               </strong>
               <strong className="Team_kda">
                 (
-                {`${participant.stats.kills}/${participant.stats.deaths}/${participant.stats.assists}`}
+                {`${participant.kills}/${participant.deaths}/${participant.assists}`}
                 )
               </strong>
               <strong className="Team_kda_avg">
                 {`KDA ${(
-                  (participant.stats.kills + participant.stats.assists) /
-                  participant.stats.deaths
+                  (participant.kills + participant.assists) /
+                  participant.deaths
                 ).toFixed(1)}`}
               </strong>
             </div>
@@ -55,8 +52,8 @@ function Team({ mapId, division, win, team, participantIdentities }) {
               {mapId === 11 && (
                 <img
                   className={styles.Team_lane}
-                  src={laneDivision[participant.timeline.lane]}
-                  alt={participant.timeline.lane}
+                  src={laneDivision[participant.lane]}
+                  alt={participant.lane}
                 />
               )}
               <Champion
@@ -65,10 +62,10 @@ function Team({ mapId, division, win, team, participantIdentities }) {
               />
               <Spell
                 spells={data.spells}
-                spell1Id={participant.spell1Id}
-                spell2Id={participant.spell2Id}
+                spell1Id={participant.summoner1Id}
+                spell2Id={participant.summoner2Id}
               />
-              <Items {...participant.stats} />
+              <Items item0={participant.item0} item1={participant.item1} item2={participant.item2} item3={participant.item3} item4={participant.item4} item5={participant.item5} />
             </div>
           </div>
         ))}

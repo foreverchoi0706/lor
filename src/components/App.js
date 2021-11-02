@@ -10,7 +10,7 @@ import ToTop from "./ToTop";
 //styles
 import "../styles/App.scss";
 //util
-import { getDdragon, getVersion } from "../util/reducers/ddragonReducer";
+import { getDdragon, getVersion } from "../../reducers/ddragonReducer";
 
 const setStorage = (summonerName) => {
   if (localStorage.getItem("history") === null) {

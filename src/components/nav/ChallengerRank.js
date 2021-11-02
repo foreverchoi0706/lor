@@ -5,7 +5,7 @@ import Loading from "../Loading";
 //styles
 import styles from "../../styles/nav/ChallengerRank.module.scss";
 //utills
-import { getChallengerRank } from "../../util/reducers/navigationReducer";
+import { getChallengerRank } from "../../../reducers/navigationReducer";
 import { tierDivision } from "../../util/division";
 
 function ChallengerRank({ tier }) {

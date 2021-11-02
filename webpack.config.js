@@ -4,7 +4,13 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const dotenv = require("dotenv");
 
-dotenv.config();
+dotenv.config({
+  path: './env/production.env',
+});
+
+// dotenv.config({
+//   path: './env/development.env'
+// });
 
 const config = {
   entry: {
@@ -43,7 +49,9 @@ const config = {
       favicon: "public/favicon.ico",
     }),
     new CleanWebpackPlugin(),
-    new webpack.DefinePlugin({}),
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_API_URL': JSON.stringify(process.env.REACT_APP_API_URL)
+    }),
   ],
   devServer: {
     hot: true,
@@ -53,7 +61,7 @@ const config = {
     },
     contentBase: path.join(__dirname, "public/"),
     host: "localhost",
-    port: "3001",
+    port: "3000",
     open: true,
   },
 };

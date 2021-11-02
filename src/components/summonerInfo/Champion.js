@@ -8,7 +8,6 @@ function Champion({ champions, championId }) {
   const [name, setName] = useState("");
 
   useEffect(() => {
-    alert(version);
     const temp = Object.values(champions.data);
     if (!name) {
       for (let i = 0; i < temp.length; i++) {

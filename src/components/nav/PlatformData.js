@@ -5,11 +5,9 @@ import Loading from "../Loading";
 //style
 import styles from "../../styles/nav/PlatformData.module.scss";
 //reducer
-import { getPlatformData } from "../../util/reducers/navigationReducer";
+import { getPlatformData } from "../../../reducers/navigationReducer";
 
 function PlatformData() {
-
-
   const version = useSelector(root => root.ddragonReducer.version);
 
   const { isLoaded, data } = useSelector(

@@ -6,7 +6,7 @@ import Team from "./Team";
 //styles
 import styles from "../../styles/summonerInfo/MatchList.module.scss";
 //util
-import { matchList, nextMatchList } from "../../util/reducers/searchReducer";
+import { matchList, nextMatchList } from "../../../reducers/searchReducer";
 
 const DAY = 86400000;
 const MINITES = 60;
@@ -50,14 +50,12 @@ function Match({
             division={"BLUE"}
             win={teams[0].win}
             team={participants.slice(0, 5)}
-            participantIdentities={participantIdentities}
           />
           <Team
             mapId={mapId}
             division={"RED"}
             win={teams[1].win}
             team={participants.slice(5, 10)}
-            participantIdentities={participantIdentities}
           />
         </div>
       </div>
@@ -65,7 +63,7 @@ function Match({
   );
 }
 
-function MatchList({ accountId }) {
+function MatchList({ puuid }) {
   const { isLoaded, data } = useSelector(
     (rootReducer) => rootReducer.searchReducer.matchList,
     shallowEqual
@@ -79,7 +77,7 @@ function MatchList({ accountId }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(matchList(accountId));
+    dispatch(matchList(puuid));
     window.addEventListener("scroll", () => {
       const nowPosition = window.scrollY;
       const windowHeight = window.innerHeight;
@@ -91,11 +89,11 @@ function MatchList({ accountId }) {
         } else {
           beginIndex += 5;
           endIndex += 5;
-          dispatch(nextMatchList(accountId, beginIndex, endIndex));
+          dispatch(nextMatchList(puuid, beginIndex, endIndex));
         }
       }
     });
-  }, [dispatch, accountId]);
+  }, [dispatch, puuid]);
 
   if (!isLoaded) {
     return <Loading />;
