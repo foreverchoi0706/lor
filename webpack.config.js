@@ -44,7 +44,6 @@ const config = {
     }),
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin({}),
-    new webpack.EnvironmentPlugin(["DEBUG"]),
   ],
   devServer: {
     hot: true,
