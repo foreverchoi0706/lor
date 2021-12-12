@@ -1,24 +1,24 @@
 import { call, delay, put, takeLatest, } from "redux-saga/effects";
 
 import common from "../api/common";
-import { INPUT_NAME_SUCCESS, INPUT_NAME_FAILURE } from "../reducers/common";
+import { INPUT_KEYWORD, INPUT_KEYWORD_SUCCESS, INPUT_KEYWORD_FAILURE } from "../reducers/common";
 
-function* inputName(e) {
+function* inputName(action) {
     try {
         yield delay(500);
-        const payload = yield call(common.getName, e.payload);
+        const payload = yield call(common.getName, action.payload);
         yield put({
-            type: INPUT_NAME_SUCCESS,
+            type: INPUT_KEYWORD_SUCCESS,
             payload
         })
     } catch (error) {
         yield put({
-            type: INPUT_NAME_FAILURE
+            type: INPUT_KEYWORD_FAILURE
         })
     }
 }
 
 
 export default function* commonSaga() {
-    yield takeLatest("INPUT_NAME", inputName);
+    yield takeLatest(INPUT_KEYWORD, inputName);
 }

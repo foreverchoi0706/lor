@@ -1,28 +1,29 @@
-export const INPUT_NAME = "INPUT_NAME";
+export const INPUT_KEYWORD = "INPUT_KEYWORD";
 
-export const INPUT_NAME_SUCCESS = "INPUT_NAME_SUCCESS";
+export const INPUT_KEYWORD_SUCCESS = "INPUT_KEYWORD_SUCCESS";
 
-export const INPUT_NAME_FAILURE = "INPUT_NAME_FAILURE";
+export const INPUT_KEYWORD_FAILURE = "INPUT_KEYWORD_FAILURE";
 
-export const inputName = (name) => ({ type: INPUT_NAME, payload: name });
+export const inputKeyword = (keyword = "") => ({ type: INPUT_KEYWORD, payload: keyword });
 
 const initialState = {
-    name: "",
     result: ""
 }
 
 const common = (state = initialState, action) => {
     switch (action.type) {
-        case INPUT_NAME:
-            return {
-                ...state,
-                name: action.payload
-            };
-        case INPUT_NAME_SUCCESS:
+        case INPUT_KEYWORD:
             return {
                 ...state,
                 result: action.payload
             };
+        case INPUT_KEYWORD_SUCCESS:
+            return {
+                ...state,
+                result: action.payload
+            };
+        case INPUT_KEYWORD_FAILURE:
+            return {};
         default:
             return state;
     }
