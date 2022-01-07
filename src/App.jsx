@@ -5,6 +5,10 @@ import { Routes, Route, HashRouter } from "react-router-dom";
 /**@components */
 import Header from "./components/organisms/Header.jsx";
 import Banner from "./components/organisms/Banner.jsx";
+/**@pages */
+import Lol from "./pages/Lol.jsx";
+import Lor from "./pages/Lor.jsx";
+import Tft from "./pages/Tft.jsx";
 
 const GlobalStyle = createGlobalStyle`
     body  {
@@ -29,9 +33,9 @@ const App = () => {
         <main>
           <Routes>
             <Route path="/" element={<div>HOME</div>} />
-            <Route path="/lol" element={<div>lol</div>} />
-            <Route path="/lor" element={<div>lor</div>} />
-            <Route path="/tft" element={<div>tft</div>} />
+            <Route path="/lol" element={<Lol />} />
+            <Route path="/lor" element={<Lor />} />
+            <Route path="/tft" element={<Tft />} />
           </Routes>
         </main>
       </HashRouter>

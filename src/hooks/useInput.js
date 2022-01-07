@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { inputKeyword } from "../../reducers/common";
+/**@reducers */
+import { inputKeyword } from "../reducers/common";
 
 const useInput = (initialState = "") => {
   const dispatch = useDispatch();
@@ -12,10 +13,7 @@ const useInput = (initialState = "") => {
     dispatch(inputKeyword(value));
   };
 
-  return [
-    state,
-    handleInput,
-  ];
+  return [state, handleInput];
 };
 
 export default useInput;
