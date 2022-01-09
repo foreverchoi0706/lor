@@ -1,19 +1,25 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { getChampionRotations } from "../reducers/lol";
+import ChampionRotations from "../components/molecules/ChampionRotations.jsx";
+
+/**@components */
+
+import { getChampionRotations, getVersion } from "../reducers/lol";
 
 const Lol = () => {
-  const { championRotations } = useSelector((_root) => _root.lol);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getVersion());
     dispatch(getChampionRotations());
   }, []);
 
-  return <div>{JSON.stringify(championRotations)}</div>;
+  return (
+    <div>
+      <ChampionRotations />
+    </div>
+  );
 };
 
 Lol.prototype = {};

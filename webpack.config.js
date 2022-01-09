@@ -5,7 +5,7 @@ const webpack = require("webpack");
 const dotenv = require("dotenv");
 
 dotenv.config({
-  path: './env/production.env',
+  path: "./env/production.env",
 });
 
 // dotenv.config({
@@ -50,7 +50,9 @@ const config = {
     }),
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin({
-      'process.env.REACT_APP_API_URL': JSON.stringify(process.env.REACT_APP_API_URL)
+      "process.env.REACT_APP_API_URL": JSON.stringify(
+        process.env.REACT_APP_API_URL
+      ),
     }),
   ],
   devServer: {

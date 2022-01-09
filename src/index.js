@@ -10,9 +10,13 @@ import rootReducer from "./reducers/_root";
 /**@saga */
 import rootSaga from "./sagas/_root";
 
+const logger = (store) => (dispatch) => (action) => {
+  return dispatch(action);
+};
+
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware, logger));
 
 sagaMiddleware.run(rootSaga);
 

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { Reset } from "styled-reset";
 import { Routes, Route, HashRouter } from "react-router-dom";
@@ -11,15 +12,14 @@ import Lor from "./pages/Lor.jsx";
 import Tft from "./pages/Tft.jsx";
 
 const GlobalStyle = createGlobalStyle`
-    body  {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        main{
-            min-width:800px;
-        }
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    main{
+      max-width: 800px;
     }
+  }
 `;
 
 const App = () => {
@@ -28,9 +28,9 @@ const App = () => {
       <GlobalStyle />
       <Reset />
       <HashRouter>
-        <Header />
-        <Banner />
         <main>
+          <Banner />
+          <Header />
           <Routes>
             <Route path="/" element={<div>HOME</div>} />
             <Route path="/lol" element={<Lol />} />

@@ -1,27 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-/**@hooks */
-import useInput from "../../hooks/useInput";
+import { getSummoner } from "../../reducers/lol";
 /**@components */
 import Input from "../atoms/Input.jsx";
-/**@actions */
-import ResultList from "./ResultList.jsx";
-
-const StyledDiv = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-`;
 
 const Search = () => {
-  const [keyword, handleInput] = useInput();
+  const { summoner } = useSelector((_root) => _root.lol);
+
+  const dispatch = useDispatch();
+
+  const [keyword, setKeyword] = useState();
+
+  useEffect(() => {
+    if (keyword) {
+      dispatch(getSummoner(keyword));
+    }
+  }, [keyword]);
+
+  const handleChage = (e) => {
+    setKeyword(e.target.value);
+  };
 
   return (
-    <StyledDiv>
-      <Input value={keyword} onChange={handleInput} />
-      {keyword && <ResultList keyword={keyword} />}
-    </StyledDiv>
+    <SearchWrap>
+      <Input value={keyword} onChange={handleChage} />
+      {keyword && (
+        <div>{summoner ? JSON.stringify(summoner) : <div>LOADING...</div>}</div>
+      )}
+      <SearchResult></SearchResult>
+    </SearchWrap>
   );
 };
+
+const SearchWrap = styled.section`
+  position: relative;
+  input {
+    width: 100%;
+  }
+`;
+
+const SearchResult = styled.ul``;
 
 export default Search;

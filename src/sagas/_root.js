@@ -1,10 +1,11 @@
 import { all } from "redux-saga/effects";
 
-import common from "./common";
 import lol from "./lol";
+import lor from "./lor";
+import tft from "./tft";
 
 function* _root() {
-  yield all([common(), lol()]);
+  yield all([lol(), lor(), tft()]);
 }
 
 export default _root;
